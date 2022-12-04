@@ -28,15 +28,22 @@ function convertRowToPair(row: string): IPair {
 
 function checkOverlap(pair: IPair): number {
     let { elf1, elf2 } = pair
-    let arr1: number[] = []
-    let arr2: number[] = []
 
-    for(let i=elf1.from; i<=elf1.to; i++ ) arr1.push(i);
-    for(let i=elf2.from; i<=elf2.to; i++ ) arr2.push(i);
-
-    let arrSet = new Set<number>([...arr1, ...arr2])
-
-    return arrSet.size < (arr1.length + arr2.length) ? 1 : 0
+    if(elf1.from < elf2.from) {
+        if ((elf1.to > elf2.from) || (elf1.to === elf2.from)){
+            return 1
+        }else {
+            return 0
+        }
+    }
+    else if(elf2.from < elf1.from) {
+        if ((elf2.to > elf1.from) || (elf2.to === elf1.from)){
+            return 1
+        }else {
+            return 0
+        }
+    }
+    else return 1
 }
 
 const containsOverlap = data
