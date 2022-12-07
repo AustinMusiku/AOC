@@ -1,5 +1,3 @@
-export const x = '';
-
 import { readFileSync } from 'fs';
 
 interface IOutcome {

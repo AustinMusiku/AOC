@@ -1,21 +1,28 @@
-export const x = '';
-
 import { readFileSync } from 'fs';
 
-const input = readFileSync('input.txt', 'utf8');
+const input: string = readFileSync('input.txt', 'utf8');
 
-let data = input.split(/\n\s*\n/);
+let data: string[] = input.split('\r\n');
 
-let reducedElfLists = data.map(elf => {
-    let elfListSum = elf
-        .trimEnd()
-        .split(/\s+/)
-        .map(t => parseInt(t))
-        .reduce((a, b) => a + b);
+let elfLists: number[][] = [];
+
+function extractFirstList(array: string[], i: number){
+    let elfList: number[] = array
+        .slice(0, i)
+        .map((e: string) => parseInt(e))
         
-    return elfListSum;
-});
+    elfLists.push(elfList);    
+    array = array.slice(i+1);
+    let idx = array.indexOf('');
+    if(idx > -1) extractFirstList(array, idx);
+}
 
-let max = reducedElfLists.sort((a, b) => b - a)[0];
+extractFirstList(data, data.indexOf(''));
+
+let reducedElfLists = elfLists
+    .map(elfList => elfList.reduce((a: number, b: number) => a + b))
+    .sort((a: number, b: number) => b - a);
+
+let max = reducedElfLists[0];
 
 console.log(max);
