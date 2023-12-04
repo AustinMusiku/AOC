@@ -1,6 +1,7 @@
 import { readFile } from 'fs'
+import path from 'path';
 
-readFile('./23/day1/input.txt', { encoding: 'utf-8' }, (err, data) => {
+readFile(path.join(__dirname, 'input.txt'), { encoding: 'utf-8' }, (err, data) => {
     if (err) throw err;
     
     let calibrationSum = data.split('\r\n')
@@ -16,5 +17,4 @@ function getRowCalibration(row: string) {
     let rowDigits = row.split('').filter(char => digits.includes(parseInt(char)))
     
     return Number(`${rowDigits[0]}${rowDigits[rowDigits.length-1]}`)
-    
 }
