@@ -23,15 +23,12 @@ console.log(marginOfError)
 function countWinningDistances(record: Record) {
     let winningDistances: number[] = []
 
-    for(let i = 0; i <= record.time; i++){
-        let timePressed = i // also equal to speed
-        let timeTravelled = record.time - timePressed
-        let distanceTravelled = timePressed * timeTravelled
-        
-        if(distanceTravelled > record.distance) {
-            winningDistances.push(distanceTravelled)    
-        }
+    for(let timePressed = 0; timePressed <= record.time; timePressed++){ // timePressed is AKA speed 
+        let distanceTravelled = timePressed * (record.time - timePressed) // speed * (time travelled)
+        if(distanceTravelled <= record.distance) continue
+        winningDistances.push(distanceTravelled)
     }
+    
     return winningDistances
 }
 
