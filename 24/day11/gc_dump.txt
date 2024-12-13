@@ -1,0 +1,21 @@
+<--- Last few GCs --->
+
+[13152:0000022A368C0E60]    88886 ms: Mark-sweep 2048.9 (2076.1) -> 2041.1 (2084.1) MB, 2887.0 / 0.0 ms  (average mu = 0.385, current mu = 0.081) allocation failure; scavenge might not succeed
+[13152:0000022A368C0E60]    94318 ms: Mark-sweep (reduce) 2055.1 (2084.1) -> 2048.0 (2060.1) MB, 4730.0 / 0.0 ms  (+ 1.9 ms in 2 steps since start of marking, biggest step 1.7 ms, walltime since start of marking 4740 ms) (average mu = 0.264, current mu = 
+
+<--- JS stacktrace --->
+
+FATAL ERROR: Reached heap limit Allocation failed - JavaScript heap out of memory
+ 1: 00007FF6B40F1ADF node_api_throw_syntax_error+203775
+ 2: 00007FF6B40714B6 SSL_get_quiet_shutdown+63558
+ 3: 00007FF6B4072822 SSL_get_quiet_shutdown+68530
+ 4: 00007FF6B4B12F34 v8::Isolate::ReportExternalAllocationLimitReached+116
+ 5: 00007FF6B4AFE2A2 v8::Isolate::Exit+674
+ 6: 00007FF6B49802FC v8::internal::EmbedderStackStateScope::ExplicitScopeForTesting+124
+ 7: 00007FF6B497D51B v8::internal::Heap::CollectGarbage+3963
+ 8: 00007FF6B4985175 v8::internal::Heap::GlobalSizeOfObjects+341
+ 9: 00007FF6B49D47EF v8::internal::StackGuard::HandleInterrupts+863
+10: 00007FF6B4696506 v8::internal::DateCache::Weekday+6886
+11: 00007FF6B4BB05C1 v8::internal::SetupIsolateDelegate::SetupHeap+558193
+12: 00007FF6B4BE3A67 v8::internal::SetupIsolateDelegate::SetupHeap+768279
+13: 00007FF634D1A2B1
